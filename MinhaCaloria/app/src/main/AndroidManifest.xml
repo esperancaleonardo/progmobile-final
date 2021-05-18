@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MinhaCaloria"
         tools:ignore="AllowBackup">
+        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

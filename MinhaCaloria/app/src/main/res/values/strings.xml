@@ -1,6 +1,23 @@
 <resources>
     <string name="app_name">Minha Caloria</string>
+    <string name="app_name_br">Minha
+        Caloria</string>
     <string name="login">LOGIN</string>
-    <string name="registrar">REGISTRAR</string>
+    <string name="register">REGISTRAR</string>
+    <string name="txtSenha">Senha:</string>
+    <string name="hint_mail">usuario@email.com</string>
+    <string name="txtEmail">Email:</string>
+    <string name="hint_pass">*****************</string>
+    <string name="cancel">CANCELAR</string>
+    <string name="txtName">Nome:</string>
+    <string name="hint_name">ex: João Silva</string>
+    <string name="txtSex">Sexo:</string>
+    <string name="peso">Peso:</string>
+    <string name="height">Altura:</string>
+    <string name="hint_peso">Kg</string>
+    <string name="hint_height">cm</string>
+    <string name="objetivo">Objetivo:</string>
+    <string name="idade">Idade:</string>
+    <string name="hint_email">00</string>
 
 </resources>
