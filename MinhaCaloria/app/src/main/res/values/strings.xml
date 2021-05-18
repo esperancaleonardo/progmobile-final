@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Minha Caloria</string>
+    <string name="login">LOGIN</string>
+    <string name="registrar">REGISTRAR</string>
+
 </resources>
