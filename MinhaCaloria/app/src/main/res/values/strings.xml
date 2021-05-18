@@ -20,4 +20,17 @@
     <string name="idade">Idade:</string>
     <string name="hint_email">00</string>
 
+    <string-array name="gender">
+        <item> </item>
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+
+    <string-array name="objective">
+        <item>Selecione</item>
+        <item>Ganhar</item>
+        <item>Manter</item>
+        <item>Perder</item>
+    </string-array>
+
 </resources>
