@@ -1,7 +1,10 @@
 package com.example.minhacaloria;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,5 +29,19 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         binding.btnRegisterCancel.setOnClickListener(v -> finish());
+
+        binding.btnRegisterRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                    coletar informações de cadastro verificar dados existente no banco e caso nao exista
+                    mostrar toast de cadastro correto ou cadastro errado caso erro
+                 */
+
+                Toast.makeText(v.getContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
+
     }
 }
