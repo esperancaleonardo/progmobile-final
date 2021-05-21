@@ -19,6 +19,7 @@
     <string name="objetivo">Objetivo:</string>
     <string name="idade">Idade:</string>
     <string name="hint_email">00</string>
+    <string name="logo_sidebar_description">Sidebar App Logo</string>
 
     <string-array name="gender">
         <item> </item>
