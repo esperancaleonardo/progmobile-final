@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/hookers_green"
+    tools:context=".SettingsFragment" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:text="Meu Perfil" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="348dp">
+
+
+                <Spinner
+                    android:id="@+id/spinnerRegisterSelectSex"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="78dp"
+                    android:layout_marginBottom="47dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/spinnerRegisterSelectObj" />
+
+                <Spinner
+                    android:id="@+id/spinnerRegisterSelectObj"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="82dp"
+                    android:layout_marginEnd="19dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/spinnerRegisterSelectSex"
+                    app:layout_constraintEnd_toStartOf="@+id/spinnerRegisterSelectSex"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/spinnerRegisterSelectSex" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/objetivo"
+                    app:layout_constraintBottom_toTopOf="@+id/spinnerRegisterSelectObj"
+                    app:layout_constraintStart_toStartOf="@+id/inputRegisterHeight" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/txtSex"
+                    app:layout_constraintBottom_toTopOf="@+id/spinnerRegisterSelectSex"
+                    app:layout_constraintStart_toStartOf="@+id/spinnerRegisterSelectSex" />
+
+                <EditText
+                    android:id="@+id/inputRegisterName"
+                    android:layout_width="251dp"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:hint="@string/hint_name"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8"
+                    tools:ignore="Autofill" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/txtName"
+                    app:layout_constraintStart_toStartOf="@+id/inputRegisterName"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/inputRegisterAge"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="78dp"
+                    android:ems="10"
+                    android:hint="@string/hint_email"
+                    android:inputType="text|number"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/inputRegisterWeight"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="Autofill" />
+
+                <EditText
+                    android:id="@+id/inputRegisterHeight"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="18dp"
+                    android:ems="10"
+                    android:hint="@string/hint_height"
+                    android:inputType="text|number"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/inputRegisterWeight"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="Autofill" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/height"
+                    app:layout_constraintBottom_toTopOf="@+id/inputRegisterHeight"
+                    app:layout_constraintStart_toStartOf="@+id/inputRegisterHeight" />
+
+                <EditText
+                    android:id="@+id/inputRegisterWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="49dp"
+                    android:layout_marginEnd="20dp"
+                    android:ems="10"
+                    android:hint="@string/hint_peso"
+                    android:inputType="text|number"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/inputRegisterAge"
+                    app:layout_constraintStart_toEndOf="@+id/inputRegisterHeight"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="Autofill" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/peso"
+                    app:layout_constraintBottom_toTopOf="@+id/inputRegisterWeight"
+                    app:layout_constraintStart_toStartOf="@+id/inputRegisterWeight" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/idade"
+                    app:layout_constraintBottom_toTopOf="@+id/inputRegisterAge"
+                    app:layout_constraintStart_toStartOf="@+id/inputRegisterAge" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="113dp">
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="Atualizar Dados"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:textSize="27dp"
+                android:paddingVertical="15dp"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Meta Atual: 0000 Kcal" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:textSize="27dp"
+                android:paddingVertical="15dp"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Meta Anterior: 0000 Kcal" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:textSize="17dp"
+                android:paddingVertical="15dp"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ultima Atualização: 00/00/00" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
