@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         db = new Database(getBaseContext());
-        db.getDatabaseName();
+        db.getWritableDatabase();
 
         fill_spinner(R.array.objective);
         fill_spinner(R.array.gender);
@@ -60,6 +60,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 

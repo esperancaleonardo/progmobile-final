@@ -37,6 +37,8 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {}
 
     private void selectFragment(Fragment f, String tag){
         transaction = getSupportFragmentManager().beginTransaction();

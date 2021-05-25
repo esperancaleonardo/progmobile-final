@@ -11,6 +11,7 @@ import com.example.minhacaloria.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
+    private Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,19 +19,27 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        db = new Database(getBaseContext());
+        db.getReadableDatabase();
+
         binding.btnLoginCancel.setOnClickListener(v -> finish());
 
         binding.btnLoginLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                /*
-                    coletar informações de login no banco e caso estiver certo
-                    mostrar toast de login correto ou senha errada caso erro
-                 */
 
-                Toast.makeText(v.getContext(), "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                if(db.verify_user_data(binding.inputLoginEmail.getText().toString(), binding.inputLoginPass.getText().toString())){
+                    Toast.makeText(v.getContext(), "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                }
+                else{
+                    Toast.makeText(v.getContext(), "Login ou senha inválidos!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {}
 }
