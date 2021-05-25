@@ -22,7 +22,7 @@
     <string name="logo_sidebar_description">Sidebar App Logo</string>
 
     <string-array name="gender">
-        <item> </item>
+        <item>-</item>
         <item>M</item>
         <item>F</item>
     </string-array>
