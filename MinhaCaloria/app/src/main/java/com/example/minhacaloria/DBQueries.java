@@ -24,7 +24,6 @@ public enum DBQueries {
 //    CREATE_TB_ALIMENTO(""),       // id, nome/descricao, peso, gordura, proteina, carboidrato, kcal, id_diario, id_usuario
 //    CREATE_TB_DIARIO(""),         // id, data, id_usuario, total de kcal, meta de kcal
 //    CREATE_TB_NOTIFICACAO("");    // id_usuario, not1, not2, not3, not4
-//
 
     private final String text;
 

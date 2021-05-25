@@ -32,10 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         binding.btnRegisterRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                    coletar informações de cadastro verificar dados existente no banco e caso nao exista
-                    mostrar toast de cadastro correto ou cadastro errado caso erro
-                 */
                 String name     = binding.inputRegisterName.getText().toString();
                 String email    = binding.inputRegisterMail.getText().toString();
                 String password = binding.inputRegisterPass.getText().toString();
@@ -49,26 +45,18 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(v.getContext(), "Verifique campos não preenchidos!", Toast.LENGTH_SHORT).show();
                 }else{
                     if(db.verify_mail_registered(email)){
-                        Double weight_ = Double.valueOf(weight);
-                        Double height_ = Double.valueOf(height);
-                        Integer age_ = Integer.valueOf(age);
-
                         try {
                             db.insert_user(new User(email, password));
                             Integer user_id = db.get_user_id(email);
-                            db.insert_profile(new Profile(user_id, name, sex, weight_, height_, age_, objective));
+                            db.insert_profile(new Profile(user_id, name, sex, Double.valueOf(weight), Double.valueOf(height), Integer.valueOf(age), objective));
 
                             Toast.makeText(v.getContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
                             finish();
                             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         }
-                        catch (SQLiteAbortException e){
-                            Toast.makeText(v.getContext(), "Ocorreu um erro!", Toast.LENGTH_SHORT).show();
-                        }
+                        catch (SQLiteAbortException e){Toast.makeText(v.getContext(), "Ocorreu um erro!", Toast.LENGTH_SHORT).show();}
                     }
-                    else{
-                        Toast.makeText(v.getContext(), "Já existe usuário com esse e-mail!", Toast.LENGTH_SHORT).show();
-                    }
+                    else{Toast.makeText(v.getContext(), "Já existe usuário com esse e-mail!", Toast.LENGTH_SHORT).show();}
                 }
             }
         });
