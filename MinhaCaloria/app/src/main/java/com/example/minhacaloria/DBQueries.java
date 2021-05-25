@@ -1,6 +1,5 @@
 package com.example.minhacaloria;
 
-import org.jetbrains.annotations.NotNull;
 
 public enum DBQueries {
     CREATE_TB_USUARIO("CREATE TABLE tb_usuario(id INTEGER PRIMARY key AUTOINCREMENT, " +
@@ -18,7 +17,8 @@ public enum DBQueries {
             "meta_calorica INTEGER NOT NULL, " +
             "data_perfil text NOT NULL);"),
     VERIFY_REGISTERED_MAIL("SELECT * from tb_usuario WHERE email=?"),
-    USER_ID_BY_MAIL("SELECT id from tb_usuario where email=?");
+    USER_ID_BY_MAIL("SELECT id from tb_usuario where email=?"),
+    GET_DADOS_USUARIO("SELECT email, senha FROM tb_usuario WHERE email=?");
 
 
 //    CREATE_TB_ALIMENTO(""),       // id, nome/descricao, peso, gordura, proteina, carboidrato, kcal, id_diario, id_usuario
@@ -32,7 +32,7 @@ public enum DBQueries {
     }
 
     @Override
-    public @NotNull String toString() {
+    public String toString() {
         return text;
     }
 }

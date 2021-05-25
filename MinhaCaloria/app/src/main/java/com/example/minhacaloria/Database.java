@@ -91,4 +91,24 @@ public class Database extends SQLiteOpenHelper {
             throw e;
         }
     }
+
+    public boolean verify_user_data(String email, String senha){
+        Cursor c = this.getReadableDatabase().rawQuery(DBQueries.GET_DADOS_USUARIO.toString(), new String[]{email});
+
+        if(c.getCount() > 0){
+            c.moveToFirst();
+            if(email.equals(c.getString(0)) && senha.equals(c.getString(1))){
+                c.close();
+                return true;
+            }
+            else {
+                c.close();
+                return false;
+            }
+        }
+        else {
+            c.close();
+            return false;
+        }
+    }
 }
