@@ -12,6 +12,7 @@ import com.example.minhacaloria.databinding.ActivityLoginBinding;
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private Database db;
+    private User logged_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(db.verify_user_data(binding.inputLoginEmail.getText().toString(), binding.inputLoginPass.getText().toString())){
+                    logged_user = new User(binding.inputLoginEmail.getText().toString(), binding.inputLoginPass.getText().toString());
                     Toast.makeText(v.getContext(), "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class).putExtra("user_logged", logged_user));
                 }
                 else{
                     Toast.makeText(v.getContext(), "Login ou senha inválidos!", Toast.LENGTH_SHORT).show();

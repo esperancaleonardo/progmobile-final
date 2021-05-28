@@ -12,6 +12,7 @@ import com.example.minhacaloria.databinding.ActivityHomeBinding;
 public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private FragmentTransaction transaction;
+    private User logged_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,18 +20,29 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        logged_user = (User) getIntent().getSerializableExtra("user_logged");
+
         selectFragment(new DiaryFragment(), "diary");
 
         binding.navSidebar.setNavigationItemSelectedListener((MenuItem item) -> {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("logged", logged_user);
+
             switch (item.getItemId()){
                 case R.id.configuracoes:
-                    selectFragment(new SettingsFragment(), "settings");
+                    SettingsFragment settings = new SettingsFragment();
+                    settings.setArguments(bundle);
+                    selectFragment(settings, "settings");
                     break;
                 case R.id.perfil:
-                    selectFragment(new ProfileFragment(), "profile");
+                    ProfileFragment profile = new ProfileFragment();
+                    profile.setArguments(bundle);
+                    selectFragment(profile, "profile");
                     break;
                 case R.id.diary:
-                    selectFragment(new DiaryFragment(), "diary");
+                    DiaryFragment diary = new DiaryFragment();
+                    diary.setArguments(bundle);
+                    selectFragment(diary, "diary");
                     break;
             }
             return true;

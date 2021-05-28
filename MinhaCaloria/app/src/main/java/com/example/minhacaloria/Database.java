@@ -62,6 +62,19 @@ public class Database extends SQLiteOpenHelper {
         }
     }
 
+    public void update_user(int id, User user){
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("email", user.getEmail());
+        values.put("senha", user.getPassword());
+
+        try {
+            db.update("tb_usuario", values, "id=?", new String[] {String.valueOf(id)});
+        }catch (SQLiteAbortException e) {
+            throw e;
+        }
+    }
+
     public Integer get_user_id(String email){
         Cursor c = getReadableDatabase().rawQuery(DBQueries.USER_ID_BY_MAIL.toString(), new String[]{email});
         c.moveToFirst();

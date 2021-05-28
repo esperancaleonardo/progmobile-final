@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -16,11 +17,18 @@ import com.example.minhacaloria.databinding.FragmentSettingsBinding;
 public class SettingsFragment extends Fragment {
     private FragmentSettingsBinding binding;
     private AlertDialog disconnectPopUp, alteraSenha, alteraEmail;
+    private User logged_user;
+    private Database db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
+
+        logged_user = (User) getArguments().getSerializable("logged");
+        binding.inputSetttingsOldMail.setText(logged_user.getEmail());
+        binding.inputSetttingsOldPass.setText(logged_user.getPassword());
+        db = new Database(getContext());
 
         habilita_notificacoes(false);
 
@@ -66,36 +74,56 @@ public class SettingsFragment extends Fragment {
         binding.btnMailSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setCancelable(true);
-                builder.setTitle("Alteração de email");
-                builder.setMessage("Email alterado com sucesso!");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        alteraEmail.dismiss();
-                    }
-                });
-                alteraEmail = builder.create();
-                alteraEmail.show();
+                if(binding.inputSetttingsNewMail.getText().toString().equals(binding.inputSetttingsOldMail.getText().toString())){
+                    Toast.makeText(v.getContext(), "O email novo é igual o atual!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Integer user_id = db.get_user_id(logged_user.getEmail());
+                    logged_user.setEmail(binding.inputSetttingsNewMail.getText().toString());
+                    db.update_user(user_id, logged_user);
+                    binding.inputSetttingsOldMail.setText(binding.inputSetttingsNewMail.getText().toString());
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setCancelable(true);
+                    builder.setTitle("Alteração de email");
+                    builder.setMessage("Email alterado com sucesso!");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            alteraEmail.dismiss();
+                        }
+                    });
+                    alteraEmail = builder.create();
+                    alteraEmail.show();
+                }
             }
         });
 
         binding.btnPassSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setCancelable(true);
-                builder.setTitle("Alteração de senha");
-                builder.setMessage("Senha alterada com sucesso!");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        alteraSenha.dismiss();
-                    }
-                });
-                alteraSenha = builder.create();
-                alteraSenha.show();
+                if(binding.inputSetttingsNewPass.getText().toString().equals(binding.inputSetttingsOldPass.getText().toString())){
+                    Toast.makeText(v.getContext(), "O senha nova é igual a atual!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Integer user_id = db.get_user_id(logged_user.getEmail());
+                    logged_user.setPassword(binding.inputSetttingsNewPass.getText().toString());
+                    db.update_user(user_id, logged_user);
+                    binding.inputSetttingsOldPass.setText(binding.inputSetttingsNewPass.getText().toString());
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setCancelable(true);
+                    builder.setTitle("Alteração de senha");
+                    builder.setMessage("Senha alterada com sucesso!");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            alteraSenha.dismiss();
+                        }
+                    });
+                    alteraSenha = builder.create();
+                    alteraSenha.show();
+                }
             }
         });
 

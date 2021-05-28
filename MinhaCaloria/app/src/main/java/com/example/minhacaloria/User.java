@@ -1,6 +1,8 @@
 package com.example.minhacaloria;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private String email, password;
 
