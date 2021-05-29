@@ -74,7 +74,10 @@ public class SettingsFragment extends Fragment {
         binding.btnMailSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.inputSetttingsNewMail.getText().toString().equals(binding.inputSetttingsOldMail.getText().toString())){
+                if(binding.inputSetttingsNewMail.getText().toString().equals("")){
+                    Toast.makeText(v.getContext(), "Digite um email novo para alterar!", Toast.LENGTH_SHORT).show();
+                }
+                else if(binding.inputSetttingsNewMail.getText().toString().equals(binding.inputSetttingsOldMail.getText().toString())){
                     Toast.makeText(v.getContext(), "O email novo é igual o atual!", Toast.LENGTH_SHORT).show();
                 }
                 else{
@@ -102,7 +105,10 @@ public class SettingsFragment extends Fragment {
         binding.btnPassSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.inputSetttingsNewPass.getText().toString().equals(binding.inputSetttingsOldPass.getText().toString())){
+                if(binding.inputSetttingsNewPass.getText().toString().equals("")){
+                    Toast.makeText(v.getContext(), "Digite uma senha nova para alterar!", Toast.LENGTH_SHORT).show();
+                }
+                else if(binding.inputSetttingsNewPass.getText().toString().equals(binding.inputSetttingsOldPass.getText().toString())){
                     Toast.makeText(v.getContext(), "O senha nova é igual a atual!", Toast.LENGTH_SHORT).show();
                 }
                 else{
