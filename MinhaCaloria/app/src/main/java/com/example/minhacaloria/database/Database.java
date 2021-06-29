@@ -1,4 +1,4 @@
-package com.example.minhacaloria;
+package com.example.minhacaloria.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,6 +9,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+
+import com.example.minhacaloria.model.Profile;
+import com.example.minhacaloria.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database extends SQLiteOpenHelper {
 
@@ -123,5 +129,50 @@ public class Database extends SQLiteOpenHelper {
             c.close();
             return false;
         }
+    }
+
+    public List get_user_profile(User logged){
+        Cursor c = getReadableDatabase().rawQuery(DBQueries.GET_PERFIL_USUARIO.toString(), new String[]{logged.getEmail()});
+        c.moveToFirst();
+
+        List<String> profile = new ArrayList<String>();
+        profile.add(c.getString(2));
+        profile.add(c.getString(5));
+        profile.add(c.getString(4));
+        profile.add(c.getString(6));
+        profile.add(c.getString(7));
+        profile.add(c.getString(3));
+        profile.add(c.getString(9));
+        profile.add(c.getString(10));
+        profile.add(c.getString(11));
+        c.close();
+        return profile;
+    }
+
+    public void update_profile(int id, Profile prof, int old_target){
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("nome", prof.getName());
+        values.put("sexo", prof.getSex());
+        values.put("peso", prof.getWeight());
+        values.put("altura", prof.getHeight());
+        values.put("idade", prof.getAge());
+        values.put("objetivo", prof.getObjective());
+        values.put("tbm", prof.getTbm());
+        values.put("meta_calorica", prof.getTarget());
+        values.put("data_perfil", prof.getUpdate());
+        values.put("meta_anterior", old_target);
+
+        try {
+            db.update("tb_perfil", values, "id=?", new String[] {String.valueOf(id)});
+        }catch (SQLiteAbortException e) {
+            throw e;
+        }
+    }
+
+    public String get_user_target(User logged){
+        Cursor c = getReadableDatabase().rawQuery(DBQueries.GET_META_USUARIO.toString(), new String[]{logged.getEmail()});
+        c.moveToFirst();
+        return  c.getString(0);
     }
 }

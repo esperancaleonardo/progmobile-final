@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/hookers_green"
-    tools:context=".SettingsFragment" >
+    tools:context=".view.fragment.SettingsFragment" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -179,42 +179,42 @@
                 android:layout_height="113dp">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btnAtualizarPerfil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:text="Atualizar Dados"
+                    android:text="@string/btnAtualizarText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/metaAtu"
                 android:textSize="27dp"
                 android:paddingVertical="15dp"
                 android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Meta Atual: 0000 Kcal" />
+                android:text="@string/meta" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/metaAnt"
                 android:textSize="27dp"
                 android:paddingVertical="15dp"
                 android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Meta Anterior: 0000 Kcal" />
+                android:text="@string/metaAnt" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/atualiz"
                 android:textSize="17dp"
                 android:paddingVertical="15dp"
                 android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ultima Atualização: 00/00/00" />
+                android:text="@string/dataAtualizacao" />
 
 
         </LinearLayout>

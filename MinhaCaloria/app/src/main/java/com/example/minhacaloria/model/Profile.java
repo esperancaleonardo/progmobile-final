@@ -1,11 +1,22 @@
-package com.example.minhacaloria;
+package com.example.minhacaloria.model;
 
+import android.annotation.SuppressLint;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Profile {
-    private String name, sex, objective, update;
-    private Integer age, user_id, tbm, target;
-    private Double weight, height;
+    private final String name;
+    private final String sex;
+    private final String objective;
+    private final String update;
+    private final Integer age;
+    private final Integer user_id;
+    private final Integer tbm;
+    private final Integer target;
+    private final Double weight;
+    private final Double height;
 
     public Profile(Integer user_id, String name, String sex, Double weight, Double height, Integer age, String objective){
         this.age = age;
@@ -15,7 +26,9 @@ public class Profile {
         this.user_id = user_id;
         this.weight = weight;
         this.height = height;
-        this.update = String.valueOf(new Date());
+        @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        this.update = dateFormat.format(new Date());
+
 
         if(sex.equals("M")){
             this.tbm = (int) Math.round(66.5 + (13.75*this.weight) + (5*this.height) - (6.8*this.age));
@@ -28,7 +41,7 @@ public class Profile {
                 this.target = this.tbm - 600;
                 break;
             case "Ganhar":
-                this.target = this.tbm + 600;
+                this.target = this.tbm + 800;
                 break;
             default:
                 this.target = this.tbm;
@@ -39,80 +52,31 @@ public class Profile {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getSex() {
         return sex;
     }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
     public String getObjective() {
         return objective;
     }
-
-    public void setObjective(String objective) {
-        this.objective = objective;
-    }
-
     public String getUpdate() {
         return update;
     }
-
-    public void setUpdate(String update) {
-        this.update = update;
-    }
-
     public Integer getAge() {
         return age;
     }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
     public Integer getUser_id() {
         return user_id;
     }
-
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
-    }
-
     public Integer getTbm() {
         return tbm;
     }
-
-    public void setTbm(Integer tbm) {
-        this.tbm = tbm;
-    }
-
     public Integer getTarget() {
         return target;
     }
-
-    public void setTarget(Integer target) {
-        this.target = target;
-    }
-
     public Double getWeight() {
         return weight;
     }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
     public Double getHeight() {
         return height;
-    }
-
-    public void setHeight(Double height) {
-        this.height = height;
     }
 }

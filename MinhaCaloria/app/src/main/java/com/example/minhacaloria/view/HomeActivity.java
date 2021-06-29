@@ -1,4 +1,4 @@
-package com.example.minhacaloria;
+package com.example.minhacaloria.view;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,7 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.minhacaloria.R;
 import com.example.minhacaloria.databinding.ActivityHomeBinding;
+import com.example.minhacaloria.view.fragment.DiaryFragment;
+import com.example.minhacaloria.view.fragment.ProfileFragment;
+import com.example.minhacaloria.view.fragment.SettingsFragment;
+import com.example.minhacaloria.model.User;
 
 public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
@@ -22,7 +27,11 @@ public class HomeActivity extends AppCompatActivity {
 
         logged_user = (User) getIntent().getSerializableExtra("user_logged");
 
-        selectFragment(new DiaryFragment(), "diary");
+        DiaryFragment init = new DiaryFragment();
+        Bundle initBundle = new Bundle();
+        initBundle.putSerializable("logged", logged_user);
+        init.setArguments(initBundle);
+        selectFragment(init, "diary");
 
         binding.navSidebar.setNavigationItemSelectedListener((MenuItem item) -> {
             Bundle bundle = new Bundle();

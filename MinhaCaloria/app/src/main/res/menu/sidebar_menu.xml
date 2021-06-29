@@ -8,8 +8,11 @@
             android:id="@+id/perfil"
             android:title=""
             android:icon="@drawable/ic_outline_person_24"/>
-    <item
+
+    <group>
+        <item
             android:id="@+id/configuracoes"
             android:title=""
             android:icon="@drawable/ic_outline_settings_24"/>
+    </group>
 </menu>

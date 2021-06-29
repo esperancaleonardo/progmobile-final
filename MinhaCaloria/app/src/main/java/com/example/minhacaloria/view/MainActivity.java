@@ -1,11 +1,11 @@
-package com.example.minhacaloria;
+package com.example.minhacaloria.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.minhacaloria.database.Database;
 import com.example.minhacaloria.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,22 +21,8 @@ public class MainActivity extends AppCompatActivity {
         db = new Database(getBaseContext());
         db.getWritableDatabase();
 
-        binding.btnLogin.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-
-
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
-
-        binding.btnRegister.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-            }
-        });
-
+        binding.btnLogin.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
+        binding.btnRegister.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
     }
 
     @Override

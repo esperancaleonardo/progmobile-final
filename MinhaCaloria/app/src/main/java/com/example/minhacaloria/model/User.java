@@ -1,4 +1,4 @@
-package com.example.minhacaloria;
+package com.example.minhacaloria.model;
 
 import java.io.Serializable;
 

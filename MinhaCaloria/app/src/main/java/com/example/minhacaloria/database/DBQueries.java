@@ -1,4 +1,4 @@
-package com.example.minhacaloria;
+package com.example.minhacaloria.database;
 
 
 public enum DBQueries {
@@ -15,10 +15,13 @@ public enum DBQueries {
             "objetivo TEXT NOT NULL, " +
             "tbm INTEGER NOT NULL, " +
             "meta_calorica INTEGER NOT NULL, " +
+            "meta_anterior INTEGER NULL, " +
             "data_perfil text NOT NULL);"),
     VERIFY_REGISTERED_MAIL("SELECT * from tb_usuario WHERE email=?"),
     USER_ID_BY_MAIL("SELECT id from tb_usuario where email=?"),
-    GET_DADOS_USUARIO("SELECT email, senha FROM tb_usuario WHERE email=?");
+    GET_DADOS_USUARIO("SELECT email, senha FROM tb_usuario WHERE email=?"),
+    GET_PERFIL_USUARIO("SELECT p.* FROM tb_perfil p INNER JOIN tb_usuario u on u.id = p.user_id where u.email=?"),
+    GET_META_USUARIO("SELECT p.meta_calorica FROM tb_perfil p INNER JOIN tb_usuario u on u.id = p.user_id where u.email=?");
 
 
 //    CREATE_TB_ALIMENTO(""),       // id, nome/descricao, peso, gordura, proteina, carboidrato, kcal, id_diario, id_usuario
