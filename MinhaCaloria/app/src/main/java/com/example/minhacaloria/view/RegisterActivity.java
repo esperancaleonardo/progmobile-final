@@ -49,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
                     try {
                         db.insert_user(new User(email, password));
                         Integer user_id = db.get_user_id(email);
+
                         db.insert_profile(new Profile(user_id, name, sex, Double.valueOf(weight), Double.valueOf(height), Integer.valueOf(age), objective));
 
                         Toast.makeText(v.getContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();

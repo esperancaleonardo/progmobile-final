@@ -120,24 +120,23 @@ public class SettingsFragment extends Fragment {
         });
         binding.checkBox2.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if(binding.checkBox1.isChecked()){
-                /// ativar alarme 1
-                Toast.makeText(getContext(), "N1!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Notificação 'Lembrete de Água' ativada!!!", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(getContext(), "N1...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Notificação 'Lembrete de Água' desativada", Toast.LENGTH_SHORT).show();
             }
         });
         binding.checkBox3.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if(binding.checkBox1.isChecked()){
-                Toast.makeText(getContext(), "N1!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Notificação 'Lembrete de Água' ativada!!!", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(getContext(), "N1...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Notificação 'Lembrete de Água' desativada", Toast.LENGTH_SHORT).show();
             }
         });
         binding.checkBox4.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if(binding.checkBox1.isChecked()){
-                Toast.makeText(getContext(), "N1!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Notificação 'Lembrete de Água' ativada!!!", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(getContext(), "N1...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Notificação 'Lembrete de Água' desativada", Toast.LENGTH_SHORT).show();
             }
         });
 

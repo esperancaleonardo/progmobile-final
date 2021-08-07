@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         db = new Database(getBaseContext());
         db.getWritableDatabase();
 
+
         binding.btnLogin.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
         binding.btnRegister.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
     }
@@ -28,4 +29,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     }
+
+
 }
